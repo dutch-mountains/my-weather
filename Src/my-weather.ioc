@@ -1,0 +1,41 @@
+<!-- Minimal STM32CubeMX .ioc configuration for Nucleo-F401RE
+     - System clock: HSI -> PLL to 84 MHz
+     - I2C1 on PB6/PB7
+     - PA0 as GPIO (DHT data)
+     - FreeRTOS (CMSIS-RTOS2) enabled
+  Note: This is a minimal .ioc. Import in STM32CubeIDE and adjust if needed.
+-->
+<STM32CubeMX>
+  <Project>
+    <ProjectName>my-weather</ProjectName>
+    <ToolVersion>6.7.0</ToolVersion>
+    <Board>Nucleo-F401RE</Board>
+    <MCU>STM32F401RETx</MCU>
+  </Project>
+  <ClockConfiguration>
+    <HSI>16000000</HSI>
+    <SYSCLK>84000000</SYSCLK>
+    <PLL>
+      <PLLM>16</PLLM>
+      <PLLN>336</PLLN>
+      <PLLP>4</PLLP>
+      <PLLQ>7</PLLQ>
+    </PLL>
+  </ClockConfiguration>
+  <Pinout>
+    <Pin name="PB6" function="I2C1_SCL"/>
+    <Pin name="PB7" function="I2C1_SDA"/>
+    <Pin name="PA0" function="GPIO_OUTPUT"/>
+  </Pinout>
+  <Peripherals>
+    <I2C1 enabled="YES">
+      <Mode>I2C</Mode>
+      <Timing>0x20404768</Timing>
+    </I2C1>
+  </Peripherals>
+  <Middleware>
+    <FREERTOS enabled="YES">
+      <API>CMSIS-RTOS2</API>
+    </FREERTOS>
+  </Middleware>
+</STM32CubeMX>
